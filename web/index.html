@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>URL Shortener</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/static/css/app.css">
+	</head>
+	<body>
+		<div class="container">
+			<h2>URL Shortener</h2>
+			<form method="POST" action="/create">
+				<input required name="url" type="text" placeholder="Enter the URL you want to shorten" />
+				<button type="submit">Create</button>
+			</form>
+		</div>
+	</body>
+</html>
