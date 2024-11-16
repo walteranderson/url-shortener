@@ -5,11 +5,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="/static/css/app.css">
+    <script src="https://unpkg.com/htmx.org@2.0.1" integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<div class="container">
 			<h2>URL Shortener</h2>
-			<form method="POST" action="/create">
+      <div id="toast-message-container"></div>
+      <form hx-post="/create" hx-target="#toast-message-container">
 				<input required name="url" type="text" placeholder="Enter the URL you want to shorten" />
 				<button type="submit">Create</button>
 			</form>

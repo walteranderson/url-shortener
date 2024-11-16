@@ -1,0 +1,8 @@
+<div class="toast-message {{if .Success}}success{{else}}error{{end}}">
+  {{if .Success}}
+    <h4>Great success! Here's your link</h4>
+    <a href="http://localhost:3001/{{.Link.Code}}">http://localhost:3001/{{.Link.Code}}</a>
+  {{else}}
+    <h4>Uh oh... Something went wrong :(</h4>
+  {{end}}
+</div>

@@ -28,6 +28,9 @@ body {
   gap: 1rem;
   padding: 1.25rem;
 }
+h2 {
+  margin: 0;
+}
 form {
   width: 100%;
   display: flex;
@@ -55,4 +58,25 @@ button {
 }
 button:hover {
   background-color: #2d5f8a;
+}
+#toast-message-container {
+  width: 100%;
+}
+.toast-message {
+  font-size: 0.870rem;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  color: white;
+}
+.toast-message.success {
+  background-color: #339966;
+}
+.toast-message.error {
+  background-color: #993333;
+}
+.toast-message a {
+  color: white;
+}
+.toast-message h4 {
+  margin-top: 0;
 }

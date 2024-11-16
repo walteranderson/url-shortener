@@ -2,14 +2,14 @@ package router
 
 import (
 	"database/sql"
-	"fmt"
 	"html/template"
 	"net/http"
 
 	"github.com/walteranderson/url-shortener/internal/database"
 )
 
-var tmpl = template.Must(template.ParseFiles("web/index.html"))
+var indexTemplate = template.Must(template.ParseFiles("web/index.html"))
+var toastTemplate = template.Must(template.ParseFiles("web/_toast-message.html"))
 
 type Router struct {
 	repo *database.Repository
@@ -29,7 +29,7 @@ func NewRouter(repo *database.Repository) http.Handler {
 }
 
 func (r *Router) homePageHandler(w http.ResponseWriter, req *http.Request) {
-	err := tmpl.Execute(w, nil)
+	err := indexTemplate.Execute(w, nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
@@ -42,11 +42,19 @@ func (r *Router) createHandler(w http.ResponseWriter, req *http.Request) {
 	}
 	url := req.Form.Get("url")
 	link, err := r.repo.CreateLink(url)
-	if err != nil {
-		http.Error(w, "", http.StatusInternalServerError)
-		return
+
+	data := struct {
+		Success bool
+		*database.Link
+	}{
+		Success: true,
+		Link:    link,
 	}
-	fmt.Println(link)
+
+	err = toastTemplate.Execute(w, data)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 
 func (r *Router) redirectHandler(w http.ResponseWriter, req *http.Request) {
