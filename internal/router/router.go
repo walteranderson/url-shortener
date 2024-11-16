@@ -3,6 +3,7 @@ package router
 import (
 	"database/sql"
 	"html/template"
+	"log"
 	"net/http"
 
 	"github.com/walteranderson/url-shortener/internal/database"
@@ -75,5 +76,6 @@ func (r *Router) redirectHandler(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
+	log.Printf("Redirecting: %s to %s", code, link.Url)
 	http.Redirect(w, req, link.Url, http.StatusFound)
 }

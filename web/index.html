@@ -12,7 +12,7 @@
 			<h2>URL Shortener</h2>
       <div id="toast-message-container"></div>
       <form hx-post="/create" hx-target="#toast-message-container">
-				<input required name="url" type="text" placeholder="Enter the URL you want to shorten" />
+				<input required name="url" type="url" placeholder="Enter the URL you want to shorten" />
 				<button type="submit">Create</button>
 			</form>
 		</div>
